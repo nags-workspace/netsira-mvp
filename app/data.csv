@@ -1,0 +1,21 @@
+domain_name,display_name,description,is_verified
+github.com,"GitHub","A platform for version control and collaboration.",false
+amazon.com,"Amazon","An e-commerce giant for online shopping.",false
+youtube.com,"YouTube","The world's largest video sharing platform.",false
+wikipedia.org,"Wikipedia","A free, multilingual online encyclopedia.",false
+reddit.com,"Reddit","A network of communities based on interests.",false
+nytimes.com,"The New York Times","A leading source for news and journalism.",false
+notion.so,"Notion","An all-in-one workspace for notes, tasks, and wikis.",false
+figma.com,"Figma","A collaborative interface design tool.",false
+twitter.com,"X (formerly Twitter)","A social networking service for real-time information.",false
+linkedin.com,"LinkedIn","The world's largest professional network.",false
+netflix.com,"Netflix","A streaming service for movies, TV shows, and documentaries.",false
+spotify.com,"Spotify","A digital music, podcast, and video streaming service.",false
+stackoverflow.com,"Stack Overflow","A question and answer site for professional and enthusiast programmers.",false
+trello.com,"Trello","A collaboration tool that organizes your projects into boards.",false
+slack.com,"Slack","A messaging app for teams that brings all your communication together.",false
+etsy.com,"Etsy","A global online marketplace for vintage and handmade items.",false
+dribbble.com,"Dribbble","A community for designers to share, grow, and get hired.",false
+canva.com,"Canva","A graphic design platform for creating social media graphics and presentations.",false
+coursera.org,"Coursera","An online learning platform with courses from top universities.",false
+udemy.com,"Udemy","An online learning and teaching marketplace.",false
