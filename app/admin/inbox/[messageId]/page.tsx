@@ -1,4 +1,4 @@
-// app/admin/inbox/[messageId]/page.tsx
+// app/admin/inbox/[messageId]/page.tsx (Corrected with explicit Props type)
 
 import { sendReplyAction } from "../../../../app/actions/admin.actions";
 import { ChevronLeft } from "lucide-react";
@@ -15,7 +15,7 @@ type Message = {
   reply: string;
 };
 
-// This function fetches a single message by its ID from the Google Sheet
+// This function is correct and does not need to be changed.
 async function getMessage(messageId: string): Promise<Message | null> {
     if (!process.env.GOOGLE_APPS_SCRIPT_URL || !process.env.APPS_SCRIPT_SECRET_KEY) {
         console.error("Missing Google Apps Script environment variables.");
@@ -30,7 +30,7 @@ async function getMessage(messageId: string): Promise<Message | null> {
                 secretKey: process.env.APPS_SCRIPT_SECRET_KEY,
                 params: { messageId }
             }),
-            cache: 'no-store' // Always fetch the latest version of this message
+            cache: 'no-store'
         });
 
         const result = await res.json();
@@ -45,13 +45,22 @@ async function getMessage(messageId: string): Promise<Message | null> {
     }
 }
 
-export default async function MessageDetailPage({ params }: { params: { messageId: string }}) {
+
+// --- THIS IS THE FIX ---
+// We explicitly define a 'Props' type for our page.
+type Props = {
+  params: { messageId: string };
+};
+
+export default async function MessageDetailPage({ params }: Props) { // <-- And we use the 'Props' type here.
+// --- END FIX ---
     const message = await getMessage(params.messageId);
     
     if (!message) {
         return notFound();
     }
 
+    // The rest of the component's JSX is correct and does not need to change.
     return (
         <div>
             <Link href="/admin/inbox" className="inline-flex items-center gap-2 text-slate-300 hover:text-white mb-8">
@@ -75,13 +84,11 @@ export default async function MessageDetailPage({ params }: { params: { messageI
                 
                 {/* --- CONDITIONAL UI: Show Reply or Form --- */}
                 {message.reply ? (
-                    // If a reply exists, display it
                     <div className="border-t border-slate-700 pt-6">
                         <h2 className="text-xl font-bold mb-2 text-green-400">Your Reply (Sent)</h2>
                         <p className="text-white whitespace-pre-wrap p-4 bg-slate-700/50 rounded-md mt-1">{message.reply}</p>
                     </div>
                 ) : (
-                    // If no reply exists, show the form
                     <div className="border-t border-slate-700 pt-6">
                         <h2 className="text-xl font-bold mb-4">Your Reply</h2>
                         <form action={sendReplyAction}>
